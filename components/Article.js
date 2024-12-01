@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import styles from '../styles/Article.module.css';
-const API_KEY = process.env.API_KEY;
+
 function Article(props) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
@@ -15,7 +15,7 @@ function Article(props) {
       return;
     }
 
-    fetch(`${API_KEY}/users/canBookmark/${user.token}`)
+    fetch(`http://localhost:3000/users/canBookmark/${user.token}`)
       .then(response => response.json())
       .then(data => {
         if (data.result && data.canBookmark) {

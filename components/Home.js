@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Article from './Article';
 import TopArticle from './TopArticle';
 import styles from '../styles/Home.module.css';
-const API_KEY = process.env.API_KEY;
+
 function Home() {
   const bookmarks = useSelector((state) => state.bookmarks.value);
   const hiddenArticles = useSelector((state) => state.hiddenArticles.value);
@@ -13,7 +13,7 @@ function Home() {
   const [topArticle, setTopArticle] = useState({});
 
   useEffect(() => {
-    fetch(`${API_KEY}/articles`)
+    fetch('http://localhost:3000/articles')
       .then(response => response.json())
       .then(data => {
         setTopArticle(data.articles[0]);
